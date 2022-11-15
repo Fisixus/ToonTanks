@@ -7,6 +7,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Math/UnrealMathUtility.h"
+//#include "DrawDebugHelpers.h"
 
 ATank::ATank()
 {
@@ -19,11 +20,43 @@ ATank::ATank()
 
 }
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	//UE_LOG(LogTemp,Warning,TEXT("SA2"));
+	m_PlayerController = Cast<APlayerController>(GetController());
+}
+
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if(m_PlayerController == nullptr) return;
+	FHitResult HitResult;
+	const bool IsHit = m_PlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
+	if(IsHit)
+	{
+		RotateTurret(HitResult.ImpactPoint);
+		/*
+		DrawDebugSphere(GetWorld(),
+		HitResult.ImpactPoint,
+		10.f,
+		12,
+		FColor::Red,
+		false,
+		-1.f);
+		*/
+	}
+	
+}
+
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 }
+
+
 
 void ATank::Move(float Direction)
 {
@@ -43,5 +76,13 @@ void ATank::Move(float Direction)
 
 	FVector NewOffset(0.f);
 	NewOffset.X = m_Speed;
-	AddActorLocalOffset(NewOffset);
+	AddActorLocalOffset(NewOffset,true);
+}
+
+void ATank::Turn(float Value)
+{
+	auto DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
+	FRotator DeltaRotation = FRotator::ZeroRotator;
+	DeltaRotation.Yaw =  DeltaTime * m_TurnRate * Value;
+	AddActorLocalRotation(DeltaRotation, true);
 }
