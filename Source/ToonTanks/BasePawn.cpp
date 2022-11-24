@@ -30,14 +30,25 @@ void ABasePawn::BeginPlay()
 	Super::BeginPlay();
 }
 
-void ABasePawn::RotateTurret(FVector LookAtTarget)
+void ABasePawn::RotateTurret(FVector LookAtTarget, float turnInterpSpeed) const
 {
 	FVector ToTarget = (LookAtTarget - m_TurretMesh->GetComponentLocation()).GetSafeNormal();
 	FRotator LookAtRotation = FRotator(0.f, ToTarget.Rotation().Yaw,0.f);
 	m_TurretMesh->SetWorldRotation(FMath::RInterpTo(m_TurretMesh->GetComponentRotation(),
 		LookAtRotation,
 		UGameplayStatics::GetWorldDeltaSeconds(this),
-		15.f));
+		turnInterpSpeed));
+}
+
+void ABasePawn::Fire()
+{
+	DrawDebugSphere(GetWorld(),
+					m_ProjectileSpawnPoint->GetComponentLocation() + m_ProjectileSpawnPoint->GetForwardVector()*1000.f,
+					10.f,
+					12,
+					FColor::Red,
+					false,
+					3.f);
 }
 
 // Called every frame
