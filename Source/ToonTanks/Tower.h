@@ -26,6 +26,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "General")
 	float m_MinLocationDistance = 300.f;
+	UPROPERTY(EditDefaultsOnly, Category = "General")
+	UMaterialInterface* m_BulletMaterial;
 
 	FTimerHandle m_FireRateTimerHandle;
 	FVector2d m_FireGap = FVector2d(2.f,4.f);

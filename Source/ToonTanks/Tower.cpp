@@ -17,7 +17,7 @@ void ATower::CheckFireCondition()
 {
 	if(IsInFireRange())
 	{
-		Fire();
+		Fire(m_BulletMaterial);
 	}
 	
 	GetWorldTimerManager().SetTimer(m_FireRateTimerHandle, this, &ATower::CheckFireCondition,

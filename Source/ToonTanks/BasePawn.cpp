@@ -2,6 +2,8 @@
 
 
 #include "BasePawn.h"
+
+#include "Bullet.h"
 #include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -40,8 +42,17 @@ void ABasePawn::RotateTurret(FVector LookAtTarget, float turnInterpSpeed) const
 		turnInterpSpeed));
 }
 
-void ABasePawn::Fire()
+void ABasePawn::Fire(UMaterialInterface* m)
 {
+	ABullet* bullet = GetWorld()->SpawnActor<ABullet>(m_BulletClass,
+							m_ProjectileSpawnPoint->GetComponentLocation(),
+							m_ProjectileSpawnPoint->GetComponentRotation());
+
+	//I know that is not the best way to do that, but I've wanted to try it this way.
+	UStaticMeshComponent* bulletMesh = bullet->FindComponentByClass<UStaticMeshComponent>();
+	bulletMesh->SetMaterial(0, m);
+	
+	/*
 	DrawDebugSphere(GetWorld(),
 					m_ProjectileSpawnPoint->GetComponentLocation() + m_ProjectileSpawnPoint->GetForwardVector()*1000.f,
 					10.f,
@@ -49,6 +60,7 @@ void ABasePawn::Fire()
 					FColor::Red,
 					false,
 					3.f);
+	*/
 }
 
 // Called every frame

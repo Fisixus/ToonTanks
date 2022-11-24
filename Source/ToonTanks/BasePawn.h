@@ -22,7 +22,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	void RotateTurret(FVector LookAtTarget, float turnInterpSpeed=15.f) const;
-	void Fire();//TODO: Change bullet colors
+	void Fire(UMaterialInterface* m);//TODO: Change bullet colors
 
 private:
 
@@ -37,6 +37,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 	USceneComponent* m_ProjectileSpawnPoint;
-	
 
+	UPROPERTY(EditDefaultsOnly, Category="General")
+	TSubclassOf<class ABullet> m_BulletClass;
 };

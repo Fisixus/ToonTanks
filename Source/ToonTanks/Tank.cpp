@@ -54,8 +54,14 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
-	
-	PlayerInputComponent->BindAction(TEXT("Fire"),IE_Pressed, this, &ATank::Fire);
+
+	FInputActionBinding FireBind( "Fire", IE_Pressed );
+	FireBind.ActionDelegate.GetDelegateForManualSet().BindLambda( [this]()
+	{
+		ATank::Fire(m_BulletMaterial);
+	});
+	PlayerInputComponent->AddActionBinding( FireBind );
+	//PlayerInputComponent->BindAction(TEXT("Fire"),IE_Pressed, this, &lambda);
 }
 
 

@@ -31,7 +31,8 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 	class UCameraComponent* m_CameraComponent;
 	
-	
+	UPROPERTY(EditDefaultsOnly, Category = "General")
+	UMaterialInterface* m_BulletMaterial;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = true))
 	float m_Speed = 0.f;
 	UPROPERTY(EditAnywhere, Category = "Movement")
