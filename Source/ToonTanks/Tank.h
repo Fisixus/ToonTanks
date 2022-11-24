@@ -41,6 +41,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Rotation")
 	float m_TurnRate = 40.f;
 
+	float m_TempDirection;
+
 	void Move(float Value);
 	void Turn(float Value);
 

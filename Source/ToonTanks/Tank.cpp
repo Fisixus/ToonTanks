@@ -71,7 +71,7 @@ void ATank::Move(float Direction)
 	{
 		m_Speed = FMath::Lerp(m_Speed, m_Speed + m_Acceleration*Direction, DeltaTime*4.f);
 	}
-	
+	m_TempDirection = Direction;
 	m_Speed = FMath::Clamp(m_Speed,-m_MaxSpeed,m_MaxSpeed);
 
 	FVector NewOffset(0.f);
@@ -84,5 +84,6 @@ void ATank::Turn(float Value)
 	auto DeltaTime = UGameplayStatics::GetWorldDeltaSeconds(this);
 	FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation.Yaw =  DeltaTime * m_TurnRate * Value;
+	if(m_TempDirection < 0) DeltaRotation = -1 * DeltaRotation;
 	AddActorLocalRotation(DeltaRotation, true);
 }
