@@ -2,6 +2,7 @@
 
 
 #include "Bullet.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 
 // Sets default values
 ABullet::ABullet()
@@ -12,6 +13,9 @@ ABullet::ABullet()
 	m_BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Bullet Mesh"));
 	RootComponent = m_BaseMesh;
 
+	M_ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
+	M_ProjectileMovementComponent->InitialSpeed = 2000.f;
+	M_ProjectileMovementComponent->MaxSpeed = 2400.f;
 }
 
 // Called when the game starts or when spawned
