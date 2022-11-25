@@ -26,6 +26,13 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 	UStaticMeshComponent* m_BaseMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
-	class UProjectileMovementComponent* M_ProjectileMovementComponent;
+	class UProjectileMovementComponent* m_ProjectileMovementComponent;
+
+	UPROPERTY(EditAnywhere)
+	float m_Damage = 10.f;
+	
+	UFUNCTION(BlueprintCallable)
+		virtual void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* 
+		  OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	
 };

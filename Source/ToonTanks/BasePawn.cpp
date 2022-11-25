@@ -47,7 +47,7 @@ void ABasePawn::Fire(UMaterialInterface* m)
 	ABullet* bullet = GetWorld()->SpawnActor<ABullet>(m_BulletClass,
 							m_ProjectileSpawnPoint->GetComponentLocation(),
 							m_ProjectileSpawnPoint->GetComponentRotation());
-
+	bullet->SetOwner(this);
 	//I know that is not the best way to do that, but I've wanted to try it this way.
 	UStaticMeshComponent* bulletMesh = bullet->FindComponentByClass<UStaticMeshComponent>();
 	bulletMesh->SetMaterial(0, m);
