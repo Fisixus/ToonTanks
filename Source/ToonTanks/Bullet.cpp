@@ -37,7 +37,7 @@ void ABullet::OnHit(UPrimitiveComponent* hitComp, AActor* otherActor, UPrimitive
 	auto damageTypeClass = UDamageType::StaticClass();
 	if(otherActor && otherActor != this && otherActor != owner)
 	{
-		UE_LOG(LogTemp,Warning,TEXT("ANNE"));
+		//UE_LOG(LogTemp,Warning,TEXT("ANNE"));
 		UGameplayStatics::ApplyDamage(otherActor, m_Damage, ownerInstigator, this, damageTypeClass);
 		Destroy();
 	}

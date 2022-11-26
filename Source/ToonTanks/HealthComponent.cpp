@@ -22,7 +22,7 @@ void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	m_CurrentHealth = m_MaxHealth;
-	UE_LOG(LogTemp, Warning, TEXT("ZAA"));
+	//UE_LOG(LogTemp, Warning, TEXT("ZAA"));
 	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::DamageTaken);
 	m_ToonTanksGameMode = Cast<AToonTanksGameMode>(UGameplayStatics::GetGameMode(this));
 }

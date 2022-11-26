@@ -19,4 +19,10 @@ protected:
 	virtual void BeginPlay() override;
 private:
 	class ATank* m_Tank;
+	class AToonTanksPlayerController* m_ToonTanksPlayerController;
+
+	UPROPERTY(EditDefaultsOnly, Category="General")
+	float m_startDelay = 3.f;
+
+	void HandleGameStart();
 };
