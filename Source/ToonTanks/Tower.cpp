@@ -37,6 +37,12 @@ bool ATower::IsInFireRange() const
 	return false;
 }
 
+void ATower::HandleDestruction()
+{
+	Super::HandleDestruction();
+	Destroy();
+}
+
 void ATower::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -46,5 +52,7 @@ void ATower::Tick(float DeltaTime)
 		RotateTurret(m_Tank->GetActorLocation(), 5.f);
 	}
 }
+
+
 
 

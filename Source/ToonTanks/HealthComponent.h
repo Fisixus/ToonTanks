@@ -31,5 +31,5 @@ private:
 	UFUNCTION()
 	void DamageTaken(AActor* damagedActor, float damage, const UDamageType* damageType, AController* instigator, AActor* damageCauser);
 
-		
+	class AToonTanksGameMode* m_ToonTanksGameMode;
 };

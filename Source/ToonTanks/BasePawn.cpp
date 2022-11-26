@@ -63,11 +63,19 @@ void ABasePawn::Fire(UMaterialInterface* m)
 	*/
 }
 
+void ABasePawn::HandleDestruction()
+{
+	//TODO: visual and sound effects
+	
+}
+
 // Called every frame
 void ABasePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
+
+
 
 
