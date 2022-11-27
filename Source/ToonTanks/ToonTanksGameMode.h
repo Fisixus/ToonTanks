@@ -17,6 +17,9 @@ public:
 	void ActorDied(AActor* deadActor);
 protected:
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
 private:
 	class ATank* m_Tank;
 	class AToonTanksPlayerController* m_ToonTanksPlayerController;
