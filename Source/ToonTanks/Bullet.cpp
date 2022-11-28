@@ -48,6 +48,7 @@ void ABullet::OnHit(UPrimitiveComponent* hitComp, AActor* otherActor, UPrimitive
 		//UE_LOG(LogTemp,Warning,TEXT("ANNE"));
 		UGameplayStatics::ApplyDamage(otherActor, m_Damage, ownerInstigator, this, damageTypeClass);
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), m_HitParticle, GetActorLocation(), GetActorRotation());
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(m_HitCamShakeClass);
 	}
 	Destroy();
 }

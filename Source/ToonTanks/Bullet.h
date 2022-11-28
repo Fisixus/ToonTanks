@@ -34,6 +34,9 @@ private:
 	UPROPERTY(VisibleAnywhere, Category="General")
 	UParticleSystemComponent* m_TrailComponent;
 
+	UPROPERTY(EditAnywhere, Category="General")
+	TSubclassOf<class UCameraShakeBase> m_HitCamShakeClass;
+
 	UPROPERTY(EditAnywhere)
 	float m_Damage = 10.f;
 	

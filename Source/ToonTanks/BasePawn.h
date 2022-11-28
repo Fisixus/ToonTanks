@@ -44,4 +44,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category="General")
 	UParticleSystem* m_DeathParticle;
+
+	UPROPERTY(EditAnywhere, Category="General")
+	TSubclassOf<class UCameraShakeBase> m_DeathCamShakeClass;
 };
