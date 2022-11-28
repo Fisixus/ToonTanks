@@ -19,6 +19,8 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	void HandleDestruction();
 	APlayerController* GetPlayerController() const;
+	bool GetTankIsAlive() const;
+	void SetTankIsAlive(bool bIsAlive);
 
 protected:
 	// Called when the game starts or when spawned
@@ -50,4 +52,6 @@ private:
 	void Turn(float Value);
 
 	APlayerController* m_PlayerController;
+
+	bool bAlive = true;
 };

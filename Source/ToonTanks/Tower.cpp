@@ -15,7 +15,9 @@ void ATower::BeginPlay()
 
 void ATower::CheckFireCondition()
 {
-	if(IsInFireRange())
+	if(m_Tank == nullptr) return;
+	
+	if(IsInFireRange() && m_Tank->GetTankIsAlive())
 	{
 		Fire(m_BulletMaterial);
 	}

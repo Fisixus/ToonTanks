@@ -69,11 +69,22 @@ void ATank::HandleDestruction()
 	Super::HandleDestruction();
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
+	SetTankIsAlive(false);
 }
 
 APlayerController* ATank::GetPlayerController() const
 {
 	return m_PlayerController;
+}
+
+void ATank::SetTankIsAlive(bool bIsAlive)
+{
+	bAlive = bIsAlive;
+}
+
+bool ATank::GetTankIsAlive() const
+{
+	return bAlive;
 }
 
 
