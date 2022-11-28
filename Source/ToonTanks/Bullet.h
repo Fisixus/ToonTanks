@@ -28,6 +28,12 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 	class UProjectileMovementComponent* m_ProjectileMovementComponent;
 
+	UPROPERTY(EditAnywhere, Category="General")
+	UParticleSystem* m_HitParticle;
+
+	UPROPERTY(VisibleAnywhere, Category="General")
+	UParticleSystemComponent* m_TrailComponent;
+
 	UPROPERTY(EditAnywhere)
 	float m_Damage = 10.f;
 	

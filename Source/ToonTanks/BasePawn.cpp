@@ -66,6 +66,7 @@ void ABasePawn::Fire(UMaterialInterface* m)
 void ABasePawn::HandleDestruction()
 {
 	//TODO: visual and sound effects
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), m_DeathParticle, GetActorLocation(), GetActorRotation());
 	
 }
 

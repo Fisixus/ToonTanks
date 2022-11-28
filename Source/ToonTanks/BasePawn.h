@@ -41,4 +41,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category="General")
 	TSubclassOf<class ABullet> m_BulletClass;
+
+	UPROPERTY(EditAnywhere, Category="General")
+	UParticleSystem* m_DeathParticle;
 };
