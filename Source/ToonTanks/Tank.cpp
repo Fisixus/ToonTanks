@@ -105,7 +105,7 @@ void ATank::Move(float Direction)
 	m_Speed = FMath::Clamp(m_Speed,-m_MaxSpeed,m_MaxSpeed);
 
 	FVector NewOffset(0.f);
-	NewOffset.X = m_Speed;
+	NewOffset.X = m_Speed*DeltaTime*75.f;
 	AddActorLocalOffset(NewOffset,true);
 }
 
